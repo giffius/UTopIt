@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About U Top It - Grand Junction Frozen Yogurt & Deli Story</title>
+    <meta name="description" content="Learn the story behind U Top It in Grand Junction. We are a locally-owned, family-friendly spot dedicated to serving the best customizable frozen yogurt and fresh deli favorites to the community.">
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍦</text></svg>">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS Reset & Global Styles (Duplicated for self-contained file) --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            /* Branding Colors */
+            --primary-pink: #FF69B4; /* Hot Pink/Fuchsia - Fun, Yogurt */
+            --secondary-green: #4CAF50; /* Green - Fresh, Deli */
+            --text-dark: #333333; /* Dark Charcoal */
+            --bg-light: #FAFAFA; /* Off-White Background */
+            --white: #FFFFFF;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+            margin-bottom: 0.5em;
+        }
+        
+        h1 { font-size: 2.2em; }
+        h2 { font-size: 1.8em; }
+        h3 { font-size: 1.4em; }
+
+        p {
+            margin-bottom: 1em;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-pink);
+            transition: color 0.3s ease;
+        }
+
+        /* Utility Class for Content Centering */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        /* --- Buttons (CTAs) --- */
+        .cta-button {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 50px; /* Pill shape */
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-primary {
+            background-color: var(--primary-pink);
+            color: var(--white);
+            border: 2px solid var(--primary-pink);
+        }
+
+        .cta-primary:hover {
+            background-color: #FF85C1; /* Lighter Pink */
+            border-color: #FF85C1;
+        }
+
+        .cta-secondary {
+            background-color: var(--secondary-green);
+            color: var(--white);
+            border: 2px solid var(--secondary-green);
+        }
+
+        .cta-secondary:hover {
+            background-color: #66BB6A; /* Lighter Green */
+            border-color: #66BB6A;
+        }
+        
+        /* --- Header & Navigation --- */
+        header {
+            background-color: var(--white);
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.8em;
+            color: var(--primary-pink);
+            font-weight: 400;
+            padding: 5px 0;
+        }
+        
+        /* Desktop Navigation */
+        .nav-links {
+            list-style: none;
+            display: none; /* Hidden on mobile by default */
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            padding: 10px 15px;
+            display: block;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-pink);
+        }
+
+        /* Hamburger Menu Icon */
+        .hamburger {
+            display: block; /* Visible on mobile */
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-dark);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+        
+        /* Mobile Menu (Dropdown) */
+        .mobile-menu {
+            position: absolute;
+            top: 100%; /* Position right below the header */
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-height: 0; /* Hidden state */
+            transition: max-height 0.3s ease-in-out;
+            list-style: none;
+            padding: 0;
+            z-index: 99;
+        }
+
+        .mobile-menu.open {
+            max-height: 300px; /* Open state - adjust as needed */
+        }
+
+        .mobile-menu li a {
+            display: block;
+            padding: 15px 20px;
+            text-align: center; /* Crucial: Centered text */
+            color: var(--text-dark);
+            font-size: 1.1em;
+            font-weight: 500;
+            border-bottom: 1px solid var(--bg-light);
+        }
+
+        .mobile-menu li:last-child a {
+            border-bottom: none;
+        }
+
+        .mobile-menu li a:hover {
+            background-color: var(--bg-light);
+            color: var(--primary-pink);
+        }
+
+        /* --- Page Header / Hero --- */
+        #page-header {
+            text-align: center;
+            padding: 40px 0 30px;
+            background-color: var(--secondary-green);
+            color: var(--white);
+        }
+
+        #page-header h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 3em;
+            margin-bottom: 0.1em;
+        }
+        
+        /* --- Section Styling (General) --- */
+        section {
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .section-pink {
+            background-color: #FFF0F5; /* Very Light Pink */
+        }
+
+        .section-pink h2 {
+            color: var(--primary-pink);
+        }
+        
+        .section-green {
+            background-color: var(--bg-light); 
+        }
+
+        .section-green h2 {
+            color: var(--secondary-green);
+        }
+
+        /* --- Content Layout --- */
+        .about-grid {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column; /* Stacked on mobile */
+            gap: 40px;
+            text-align: left;
+        }
+        
+        .story-block {
+            padding: 20px;
+            background-color: var(--white);
+            border-left: 5px solid var(--primary-pink);
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .story-block h3 {
+            color: var(--primary-pink);
+            margin-bottom: 10px;
+        }
+
+        .mission-statement {
+            background-color: #E8F5E9; /* Light Green background for emphasis */
+            padding: 30px;
+            border-radius: 8px;
+            margin: 40px auto;
+            max-width: 800px;
+            border: 1px solid var(--secondary-green);
+        }
+
+        .mission-statement p {
+            font-style: italic;
+            font-size: 1.1em;
+            color: var(--text-dark);
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        /* --- Hours Table --- */
+        .hours-table {
+            width: 100%;
+            max-width: 400px;
+            margin: 20px auto;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        
+        .hours-table th, .hours-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .hours-table th {
+            background-color: #f5f5f5;
+            font-weight: 700;
+        }
+        
+        .hours-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .hours-table .today {
+            background-color: #FFFFE0; /* Highlight today */
+            font-weight: 700;
+        }
+        
+        /* --- Footer --- */
+        footer {
+            background-color: var(--text-dark);
+            color: var(--white);
+            padding: 30px 0 80px; /* Extra padding for sticky CTAs */
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        .footer-content a {
+            color: var(--primary-pink);
+            margin: 0 10px;
+            font-size: 1.2em;
+        }
+        
+        .footer-content p {
+            margin-top: 10px;
+            font-size: 0.85em;
+            opacity: 0.8;
+        }
+
+        /* --- Sticky Bottom CTAs (Duplicated) --- */
+        .sticky-ctas {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 50;
+        }
+        
+        .sticky-cta-button {
+            flex: 1;
+            margin: 0 5px;
+            padding: 10px 5px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 0.9em;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        .cta-call {
+            background-color: var(--primary-pink);
+            color: var(--white);
+        }
+        
+        .cta-directions {
+            background-color: var(--secondary-green);
+            color: var(--white);
+        }
+
+
+        /* --- Media Queries for Tablet/Desktop (Min-width: 768px) --- */
+        @media (min-width: 768px) {
+            /* General */
+            h1 { font-size: 4em; }
+            h2 { font-size: 2.5em; }
+            h3 { font-size: 1.8em; }
+            section { padding: 60px 0; }
+            
+            /* Navigation */
+            .hamburger { display: none; } 
+            .nav-links { display: flex; } 
+            .mobile-menu { display: none !important; } 
+
+            /* Layout */
+            .about-grid {
+                flex-direction: row; /* Side-by-side on desktop */
+                max-width: 1000px;
+                margin: 40px auto;
+            }
+            
+            .story-block {
+                flex: 1;
+                padding: 40px;
+            }
+
+            /* Sticky CTAs */
+            .sticky-ctas {
+                width: auto;
+                right: 20px;
+                left: auto;
+                bottom: 20px;
+                flex-direction: column;
+                padding: 10px;
+                border-radius: 10px;
+                max-width: 150px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            }
+            
+            .sticky-cta-button {
+                margin: 5px 0;
+                padding: 12px 15px;
+                border-radius: 8px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-content">
+            <a href="index.html" class="logo">U Top It</a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu & Order</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <div class="hamburger" id="hamburger-menu">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        
+        <ul class="mobile-menu" id="mobile-dropdown">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu & Order</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </header>
+
+    <section id="page-header">
+        <div class="container">
+            <h1>Our Story</h1>
+            <p style="font-size: 1.1em; font-weight: 300; margin-bottom: 0;">Locally Owned, Community Loved, and Built on Customization.</p>
+        </div>
+    </section>
+
+    <section class="section-pink">
+        <div class="container">
+            <h2>The U Top It Difference</h2>
+
+            <div class="mission-statement">
+                <p>"The ultimate destination for your custom cravings. Whether you're topping your perfect frozen treat or enjoying an authentic deli favorite, **U Top It** offers quality, variety, and fun in every bite."</p>
+            </div>
+            
+            <div class="about-grid">
+                
+                <div class="story-block">
+                    <h3>Established in Grand Junction</h3>
+                    <p>U Top It was founded with a simple idea: to give the customer total control over their experience. Starting primarily as a self-serve frozen yogurt shop, we quickly became a favorite spot for families and students alike looking for a fun, personalized dessert.</p>
+                    <p>As our community grew, so did our vision. We expanded our menu to include unique, high-quality savory items, adding authentic **Mexican Tortas** and delicious **Italian Paninis** to make us a true all-day destination.</p>
+                </div>
+                
+                <div class="story-block">
+                    <h3>Our Commitment to You</h3>
+                    <ul>
+                        <li><p><strong>Freshness First:</strong> We use fresh ingredients, from our fruit toppings to our deli meats and bread.</p></li>
+                        <li><p><strong>Family Friendly:</strong> We provide a clean, vibrant, and welcoming atmosphere for all ages.</p></li>
+                        <li><p><strong>Local Love:</strong> As a local Grand Junction business, we are committed to supporting our neighbors and serving our community with a smile.</p></li>
+                    </ul>
+                    <a href="contact.html" class="cta-button cta-secondary">Join Our Team</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-green">
+        <div class="container">
+            <h2>Visit Us Today!</h2>
+            <p>We're located conveniently in Grand Junction. See our hours below or get directions instantly.</p>
+            
+            <table class="hours-table">
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Hours</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Monday - Saturday</td>
+                        <td>11:00 AM - 8:00 PM</td>
+                    </tr>
+                    <tr class="today">
+                        <td>Sunday</td>
+                        <td>12:00 PM - 7:00 PM</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <a href="https://maps.app.goo.gl/tW8H52G4X45F3nS7A" target="_blank" class="cta-button cta-primary">📍 Find Our Location</a>
+        </div>
+    </section>
+
+
+    <footer>
+        <div class="container footer-content">
+            <p>© 2025 U Top It Grand Junction. All rights reserved.</p>
+            <p>230 East Lynwood Street, Unit I, Grand Junction, CO 81503</p>
+            <p>Call Us: (970) 644-5373 | <a href="mailto:info@utopitgj.com">info@utopitgj.com</a></p>
+            <div>
+                <a href="https://www.facebook.com/utopitgj" target="_blank" aria-label="Find us on Facebook">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" style="vertical-align: middle;">
+                        <path d="M12 2.04C6.5 2.04 2 6.3 2 11.5c0 4.2 3.1 7.7 7.2 8.4V14H6V11.5h3.2V9.3c0-3.1 1.8-4.9 4.7-4.9c1.4 0 2.4.3 2.8.4v3.1h-1.8c-1.5 0-1.8.7-1.8 1.8V14h3.5l-.6 3.9h-2.9v5.6c4.1-.7 7.2-4.2 7.2-8.4c0-5.2-4.5-9.46-10-9.46z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="sticky-ctas" id="sticky-ctas">
+        <a href="tel:+19706445373" class="sticky-cta-button cta-call">
+            📞 Call Now
+        </a>
+        <a href="https://maps.app.goo.gl/tW8H52G4X45F3nS7A" target="_blank" class="sticky-cta-button cta-directions">
+            📍 Get Directions
+        </a>
+    </div>
+
+    <script>
+        // --- Navigation Toggle Logic ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.getElementById('hamburger-menu');
+            const mobileMenu = document.getElementById('mobile-dropdown');
+
+            hamburger.addEventListener('click', () => {
+                // Toggle 'open' class on the menu for CSS transition
+                mobileMenu.classList.toggle('open');
+                
+                // Optional: Animate the hamburger icon itself (cross)
+                hamburger.classList.toggle('is-active'); 
+            });
+            
+            // Close menu when a link is clicked (useful on mobile)
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('open');
+                    hamburger.classList.remove('is-active');
+                });
+            });
+            
+            // Small script to ensure hamburger icon changes when menu is open/closed
+            const style = document.createElement('style');
+            style.textContent = `
+                .is-active div:nth-child(2) {
+                    opacity: 0;
+                }
+                .is-active div:nth-child(1) {
+                    transform: translateY(8px) rotate(45deg);
+                }
+                .is-active div:nth-child(3) {
+                    transform: translateY(-8px) rotate(-45deg);
+                }
+            `;
+            document.head.appendChild(style);
+
+            // --- Sticky CTA Visibility Logic ---
+            const stickyCtas = document.getElementById('sticky-ctas');
+            const footer = document.querySelector('footer');
+            
+            // Function to check if sticky CTAs are over the footer
+            const checkCtaVisibility = () => {
+                if (!stickyCtas || !footer) return;
+
+                // Get the top position of the footer
+                const footerTop = footer.getBoundingClientRect().top;
+                // Get the height of the viewport
+                const viewportHeight = window.innerHeight;
+                
+                // If the top of the footer is less than the bottom of the viewport + a buffer, hide the CTAs.
+                if (footerTop < viewportHeight + 50) { 
+                    stickyCtas.style.opacity = '0';
+                    stickyCtas.style.pointerEvents = 'none';
+                } else {
+                    stickyCtas.style.opacity = '1';
+                    stickyCtas.style.pointerEvents = 'auto';
+                }
+            };
+
+            // Run on scroll and initial load
+            window.addEventListener('scroll', checkCtaVisibility);
+            window.addEventListener('resize', checkCtaVisibility);
+            checkCtaVisibility(); // Initial check
+        });
+    </script>
+</body>
+</html>
